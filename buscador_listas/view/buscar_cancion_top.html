@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="{lang}">
+    <head>
+        <title>{titulo}</title>
+        <link rel="stylesheet" type="text/css" href="../../media/css/metallist.css"/>
+        <script type="text/javascript" src="../controller/ajax_buscar_cancion.js"></script>
+    </head>
+    <body>
+        <form name="buscador" action=""
+              onsubmit="buscar_canciones();
+                      return false">
+            <h3>Buscador</h3>
+            <table>
+                <tr>
+                    <td>&nbsp;</td><td><label><input name="buscar" type="text"/></label></td>
+               	    <td>&nbsp;</td><td><label><input type="submit" name="Submit" value="Buscar" /></label></td>
+                </tr>
+            </table>
+        </form>
+        <div id="resultado">
+            

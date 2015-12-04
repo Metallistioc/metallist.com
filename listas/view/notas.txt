@@ -1,5 +1,0 @@
-Tomaremos de partida el código de James Edwards para el drag&drop accesible con normas ARIA.
-http://www.sitepoint.com/accessible-drag-drop/
-https://github.com/sitepoint-editors/accessible-drag-and-drop
-
-Hay otro excelente tutorial en http://www.html5rocks.com/en/tutorials/dnd/basics/
