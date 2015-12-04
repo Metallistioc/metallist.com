@@ -16,6 +16,6 @@ include('../model/consulta_buscar_cancion.php');
 processar_template_noentities('buscar_cancion_footer.html',$diccionario);
 ?>
 <script type="text/javascript" > eval(document.getElementById("runscript").innerHTML ); </script>
-<!--<script type="text/javascript" > run(); </script>-->
+<script type="text/javascript" > run(); </script>
  </body>
 </html>

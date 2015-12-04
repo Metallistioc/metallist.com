@@ -48,16 +48,18 @@ function buscar_canciones() {
             divResultado.innerHTML = ajax.responseText;
             //llamar a funcion para limpiar los inputs
             LimpiarCampos();
+            eval(document.getElementById("runscript").innerHTML);
+            run();
         }
     };
     ajax.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     //enviando los valores por POST
     ajax.send("buscar=" + buscar);
+    
 }
 
 //funcion para limpiar los campos
 function LimpiarCampos() {
     document.buscador.buscar.value = "";
     document.buscador.buscar.focus();
-    eval(document.getElementById("runscript").innerHTML);
 }
