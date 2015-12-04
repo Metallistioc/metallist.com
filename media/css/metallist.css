@@ -87,12 +87,15 @@ div {
 	list-style-type:none;
 	
 	margin:0 0 2px 0;
-	padding:0.2em 0.4em;
-	
+	padding:0.2em 0.4em 0.2em 1.7em;
+        
 	border-radius:0.2em;
 	background:#ccc;
 	line-height:1.3;
         height:30px;
+        
+        background-image: url("../../media/img/selector.png");
+	background-repeat: no-repeat;
 }
 
 /* items focus state */
