@@ -13,7 +13,7 @@ body
 div {
     //display: inline-block;
 }
-.div_table{
+.div_table, #resultado{
     float:left;
 }
 
@@ -23,21 +23,21 @@ div {
 }
 
 /* FILA LISTA */
-#lista_cancion {}
-#lista_cancion_imagen_disco {
+.lista_cancion {}
+.lista_cancion_imagen_disco {
     float:left;
     padding-right: 5px;
 }
-#lista_cancion_texto{
+.lista_cancion_texto{
     line-height: 1;
     margin-top: 3px;
 }
 
-#lista_cancion_numero_titulo{
+.lista_cancion_numero_titulo{
     font-weight: bold;
 
 }
-#lista_cancion_grupo_album_any{
+.lista_cancion_grupo_album_any{
     font-size: 0.8em;
 }
 #lista_fila2 {

@@ -7,12 +7,12 @@ $diccionario = array(
 	'titulo'=>'Buscador de canciones',
 );
 
-// Cabecera HTML de la pÃ¡gina
+// Cabecera HTML de la página
 processar_template_noentities('buscar_cancion_top.html',$diccionario);
 
 include('../model/consulta_buscar_cancion.php');
 
-// Pie HTML de la pÃ¡gina
+// Pie HTML de la página
 processar_template_noentities('buscar_cancion_footer.html',$diccionario);
 ?>
 <!-- <script type="text/javascript" > eval(document.getElementById("runscript").innerHTML ); </script>   
