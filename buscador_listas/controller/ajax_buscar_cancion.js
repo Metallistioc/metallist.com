@@ -39,7 +39,7 @@ function buscar_canciones() {
     ajax = objetoAjax();
 
     //uso del metodo POST, al archivo que realiza la consulta y a/sincronia.
-    ajax.open("POST", '../model/consulta_buscar_cancion.php', false);
+    ajax.open("POST", '../model/consulta_buscar_cancion.php', true);
     //cuando el objeto XMLHttpRequest cambia de estado, la funcion se inicia
     ajax.onreadystatechange = function () {
         //la funcion responseText tiene todos los datos pedidos al servidor
