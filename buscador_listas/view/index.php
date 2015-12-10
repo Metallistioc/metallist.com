@@ -5,6 +5,7 @@ include('../../_lib/cleaner.php');
 $diccionario = array(
 	'lang'=> 'es',
 	'titulo'=>'Buscador de canciones',
+        'buscar_cancion' => include('../model/consulta_buscar_cancion.php')
 );
 
 // Cabecera HTML de la página
