@@ -8,25 +8,6 @@
  * asignarle un ID. DespuÃ©s volver a ejecutarlo con un eval( document...id.innerHTML).  
  */
 
-// Función para recoger los datos de PHP según el navegador, se usa siempre.
-function objetoAjax() {
-    var xmlhttp = false;
-    try {
-        xmlhttp = new ActiveXObject("Msxml2.XMLHTTP");
-    } catch (e) {
-        try {
-            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-        } catch (E) {
-            xmlhttp = false;
-        }
-    }
-
-    if (!xmlhttp && typeof XMLHttpRequest != 'undefined') {
-        xmlhttp = new XMLHttpRequest();
-    }
-    return xmlhttp;
-}
-
 //Funcion para recoger los datos del formulario de busqueda y enviarlos por post  
 function buscar_canciones() {
 
@@ -47,9 +28,9 @@ function buscar_canciones() {
             //mostrar resultados en esta capa
             divResultado.innerHTML = ajax.responseText;
             //llamar a funcion para limpiar los inputs
-            LimpiarCampos();
+            limpiarCamposBuscarCancion();
             eval(document.getElementById("runscript").innerHTML);
-            run();
+            //run();
         }
     };
     ajax.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
@@ -59,7 +40,7 @@ function buscar_canciones() {
 }
 
 //funcion para limpiar los campos
-function LimpiarCampos() {
+function limpiarCamposBuscarCancion() {
     document.buscador.buscar.value = "";
     document.buscador.buscar.focus();
 }

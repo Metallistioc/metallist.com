@@ -1,178 +1,92 @@
-</div>
-<div id="lista_fila2">
-    <h3>Lista</h3>
-    <ol data-draggable="target">
-    </ol>
+    </div>
+    <div id="lista_fila2">
+        <h3>Lista sin guardar</h3>
+        <ol id="metallist_list" data-draggable="target">
+        </ol>
+        <div>
+            <div id="buttons_order">
+            <button onclick="moveUp();return false" disabled>&#11015;</button>
+            <button onclick="moveDown();return false" disabled>&#11014;</button>
+            <button onclick="removeFromList();return false" disabled >&#9253;</button>
+        </div>
+            <div id="buttons_player" >
+                <button id="btt_prev" onclick="playPrevious();return false" >&lt;&lt;</button>
+                <button id="bttPlay" onclick="playStop();return false" >&#9658;</button>
+                <button id="bttPause" onclick="playStop();return false" disabled>||</button>
+                <button onclick="playNext();return false" >&gt;&gt;</button>
+            </div>
+            <audio id="audio_control" onended="playEnded()"></audio>
+        </div>
+    </div>
 
-    <br/>
-    <audio controls id="reproductor_musica">
-        <source src="../../media/audio/metallica/Ride_The_Lightning/01-Fight_Fire_With_Fire.mp3" type="audio/mpeg">
-        <source src="../../media/audio/metallica/Ride_The_Lightning/01-Fight_Fire_With_Fire.ogg" type="audio/ogg"/>
-        <!-- Texto fallback -->
-        Tu navegador no soporta la reproducción.<br/>Actualizaló o 
-        <a href="../../media/audio/metallica/Ride_The_Lightning/01-Fight_Fire_With_Fire.ogg"> descarga </a> el fichero.
-    </audio>
-</div>
-<div class="clear"></div>
-
+    <div id="metallist_aside">
+        <h3>Aside</h3>
+         <div id="aside_inside">
+             <div>
+                 <form name="guardar_lista" action=""
+                      onsubmit="check_lista_canciones();return false">
+                <h3>Lista</h3>
+                <table>
+                    <tr>
+                        <td>Nombre</td><td>
+                            <label>
+                                <input name="nombre_lista" type="text" required/>
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>descripción</td><td>
+                            <label>
+                                <input name="descripcion_lista" type="text" required/>
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label>
+                                <input type="submit" name="Submit" value="guardar"/>
+                            </label>
+                        </td>
+                    </tr>
+                </table>
+            </form>   
+            </div>
+             <div id="result_save_list">
+                ¡Seleccione las canciones de la lista y complete el formulario!
+             </div>
+        <div>
+    </div>
+    <div class="clear"></div>
+</section>
+<footer>
+    <div id="metallist_footer"><img src="../../media/img/metallist_footer_001.png" width="100%" alt="footer"/></div>
+</footer>
 <script id="runscript" type="text/javascript">
-    (function ()
-    {
-
+    ( function () {
         //exclude older browsers by the features we need them to support
         //and legacy opera explicitly so we don't waste time on a dead browser
-        if
-                (
-                        !document.querySelectorAll
-                        ||
-                        !('draggable' in document.createElement('span'))
-                        ||
-                        window.opera
-                        )
-        {
+        if ( !document.querySelectorAll 
+                || !('draggable' in document.createElement('span')) 
+                || window.opera ) {
             return;
         }
 
         //get the collection of draggable items and add their draggable attribute
-        for (var
-                items = document.querySelectorAll('[data-draggable="item"]'),
+        for (var items = document.querySelectorAll('[data-draggable="item"]'),
                 len = items.length,
                 i = 0; i < len; i++)
-        {
-            items[i].setAttribute('draggable', 'true');
-            items[i].setAttribute('aria-grabbed', 'false');
-            items[i].setAttribute('tabindex', '0');
-        }
-
-        //dictionary for storing the selections data 
-        //comprising an array of the currently selected items 
-        //a reference to the selected items' owning container
-        //and a refernce to the current drop target container
-        var selections = null;
-        selections =
-                {
-                    items: [],
-                    owner: null,
-                    droptarget: null
-                };
-
-        //function for selecting an item
-        function addSelection(item)
-        {
-            //if the owner reference is still null, set it to this item's parent
-            //so that further selection is only allowed within the same container
-            if (!selections.owner)
             {
-                selections.owner = item.parentNode;
+                items[i].setAttribute('draggable', 'true');
+                items[i].setAttribute('tabindex', '0');
             }
-
-            //or if that's already happened then compare it with this item's parent
-            //and if they're not the same container, return to prevent selection
-            else if (selections.owner != item.parentNode)
-            {
-                return;
-            }
-
-            //set this item's grabbed state
-            item.setAttribute('aria-grabbed', 'true');
-
-            //add it to the items array
-            selections.items.push(item);
-        }
-
-        //function for unselecting an item
-        function removeSelection(item)
-        {
-            //reset this item's grabbed state
-            item.setAttribute('aria-grabbed', 'false');
-
-            //then find and remove this item from the existing items array
-            for (var len = selections.items.length, i = 0; i < len; i++)
-            {
-                if (selections.items[i] == item)
-                {
-                    selections.items.splice(i, 1);
-                    break;
-                }
-            }
-        }
-
-        //function for resetting all selections
-        function clearSelections()
-        {
-            //if we have any selected items
-            if (selections.items.length)
-            {
-                //reset the owner reference
-                selections.owner = null;
-
-                //reset the grabbed state on every selected item
-                for (var len = selections.items.length, i = 0; i < len; i++)
-                {
-                    selections.items[i].setAttribute('aria-grabbed', 'false');
-                }
-
-                //then reset the items array		
-                selections.items = [];
-            }
-        }
 
         //variable for storing the dragging item reference 
         //this will avoid the need to define any transfer data 
-        //which means that the elements don't need to have IDs 
+        //which means that the elements don't need to have IDs */
         var item = null;
         
-        
-        /***** EVENTS *****/
-        //mousedown event to implement single selection
-	document.addEventListener('mousedown', function(e)
-	{
-		//if the element is a draggable item
-		if(e.target.getAttribute('draggable'))
-		{
-			//clear dropeffect from the target containers
-			clearDropeffects();
-
-			//if the multiple selection modifier is not pressed 
-			//and the item's grabbed state is currently false
-			if
-			(
-				!hasModifier(e) 
-				&& 
-				e.target.getAttribute('aria-grabbed') == 'false'
-			)
-			{
-				//clear all existing selections
-				clearSelections();
-			
-				//then add this new selection
-				addSelection(e.target);
-			}
-		}
-		
-		//else [if the element is anything else]
-		//and the selection modifier is not pressed 
-		else if(!hasModifier(e))
-		{
-			//clear dropeffect from the target containers
-			clearDropeffects();
-
-			//clear all existing selections
-			clearSelections();
-		}
-		
-		//else [if the element is anything else and the modifier is pressed]
-		else
-		{
-			//clear dropeffect from the target containers
-			clearDropeffects();
-		}
-
-	}, false);
-
         //dragstart event to initiate mouse dragging 
-        document.addEventListener('dragstart', function (e)
-        {
+        document.addEventListener('dragstart', function (e) {
             //set the item reference to this element
             item = e.target;
 
@@ -181,7 +95,6 @@
             //most browsers support the proper mime-type syntax, eg. "text/plain"
             //but we have to use this incorrect syntax for the benefit of IE10+
             e.dataTransfer.setData('text', ''); 
-
         }, false);
 
 
@@ -189,11 +102,9 @@
         //ie. the default action of an element is not to allow dragging 
         document.addEventListener('dragover', function (e)
         {
-            if (item)
-            {
+            if (item){
                 e.preventDefault();
             }
-
         }, false);
 
         //drop event to allow the element to be dropped into valid targets
@@ -210,17 +121,15 @@
                 item.parentNode.appendChild(item);
                 e.target.appendChild(item);*/
             }
-
         }, false);
 
         //dragend event to clean-up after drop or abort
         //which fires whether or not the drop target was valid
-        document.addEventListener('dragend', function (e)
-        {
+        document.addEventListener('dragend', function (e){
             item = null;
-
         }, false);
-
     })();
 </script>
-
+<script type="text/javascript" src="../controller/player.js"></script>
+</body>
+</html>

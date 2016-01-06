@@ -2,12 +2,13 @@
 html, body
 {
 	font:normal normal normal 100%/1.4 tahoma, sans-serif;
-	background:#f9f9f9;
+	background:white;
 	color:#000;
 }
 body
 {  
     font-size:0.8em;
+    background-color: white;
 }
 
 div {
@@ -39,20 +40,24 @@ div {
 }
 .lista_cancion_grupo_album_any{
     font-size: 0.8em;
+    background-image: url("../../media/img/progress.png");
+    background-size: 0px 12px;
+    background-repeat: no-repeat;
 }
-#lista_fila2 {
+#lista_fila2, #metallist_aside {
     float:left;
 }
 
 /* draggable targets */
 [data-draggable="target"]
 {
-	display: inline-block;
 	list-style-type:none;
 	
-	width:300px;
-	//height:7.5 em; // en función altura de la pantalla
-	overflow-y: auto;
+	//width:300px;
+	
+        min-width: 260px;
+        height:285px;
+        //height:7.5 em; // en función altura de la pantalla
 	
 	margin:0 0.5em 0.5em 0em;
 	padding:0.5em 0.5em 2em 0.5em;
@@ -95,6 +100,7 @@ div {
         
         background-image: url("../../media/img/selector.png");
 	background-repeat: no-repeat;
+        
 }
 
 /* items focus state */
@@ -109,4 +115,105 @@ div {
 {
 	background:#8ad;
 	color:#fff;
+}
+
+[play="true"] {
+    background: #e1bebe;
+    box-shadow:0 0 0 2px #3b4149;
+}
+
+
+/* Metallist footer */
+#metallist_footer {
+    position : fixed;
+    bottom : 0;
+    width: 100%;
+    max-height: 130px;
+    margin-top : 130px;
+    border-bottom: 5px;
+    border-bottom-color: #3b4149;
+}
+
+#metallist_header {
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+#metallist_nav{
+    color:white;
+    background-color: #3b4149;
+    height: 30px;
+}
+
+#metallist_content {
+    background-color: white;
+}
+
+#metallist_search_result, #metallist_list{
+    overflow-y: auto;
+}
+
+#resultado, #lista_fila2 {
+    width: 25%;
+    padding: 0px 0px 0px 2%;
+}
+
+#metallist_aside {
+    padding: 0px 2%;
+    width: 42%;
+}
+
+#aside_inside{
+        min-width: 260px;
+        height:285px;
+        //height:7.5 em; // en función altura de la pantalla
+	
+	margin:0 0.5em 0.5em 0em;
+	padding:0.5em 0.5em 2em 0.5em;
+	
+	border:2px solid #888;
+	border-radius:0.2em;
+	
+	background:#ddd;
+	color:#555;
+}
+
+#metallist_search{
+}
+
+#buscador{
+
+}
+
+#search {
+    margin-top: 5px;
+}
+
+#result_save_list{
+        margin:1em 0em 1em 0em;
+	padding:0.5em;
+        background-color: white;
+        font-family: monospace;
+        font-size: small;
+}
+
+#buttons_order {
+    margin-top: 5px;
+    float: left;
+}
+
+#buscador {
+    margin-top: 7px;
+    float: left;
+}
+
+#buttons_player, #btt_find  {
+    margin-top: 5px;
+    float:right;
+}
+
+#progress {
+   background-color:#b2c368; // red
+   height: 5px;
+   position:relative;
 }

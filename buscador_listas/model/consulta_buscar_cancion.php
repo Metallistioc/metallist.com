@@ -9,7 +9,7 @@ include('../../_lib/mysql_connector.php');
 $array_canciones = array();
 
 //variables POST
-$busqueda = "metallica"; // por defecto, solo para pruebas, después " "
+$busqueda = ""; // por defecto, solo para pruebas, después " "
 if ( isset( $_POST['buscar'] )){
     $busqueda = "%{$_POST['buscar']}%";
 }

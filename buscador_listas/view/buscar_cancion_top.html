@@ -1,22 +1,24 @@
 <!DOCTYPE html>
 <html lang="{lang}">
-    <head>
-        <title>{titulo}</title>
-        <meta charset="UTF-8"/>
-        <link rel="stylesheet" type="text/css" href="../../media/css/metallist.css"/>
-        <script type="text/javascript" src="../controller/ajax_buscar_cancion.js"></script>
-    </head>
-    <body>
-        <form name="buscador" action=""
-              onsubmit="buscar_canciones();
-                      return false">
-            <h3>Buscador</h3>
-            <table>
-                <tr>
-                    <td>&nbsp;</td><td><label><input name="buscar" type="text"/></label></td>
-               	    <td>&nbsp;</td><td><label><input type="submit" name="Submit" value="Buscar" /></label></td>
-                </tr>
-            </table>
-        </form>
-        <div id="resultado">
-            
+<head>
+    <title>{titulo}</title>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" type="text/css" href="../../media/css/reset.css"/>
+    <link rel="stylesheet" type="text/css" href="../../media/css/metallist.css"/>
+    
+    <script type="text/javascript" src="../controller/ajax_objeto.js"></script>
+    <script type="text/javascript" src="../controller/ajax_buscar_cancion.js"></script>
+    <script type="text/javascript" src="../controller/ajax_guardar_lista.js"></script>
+</head>
+<body>
+    <nav>
+        <header>
+            <div id="metallist_nav">Metallist</div>
+            <div id="metallist_header">
+                <img src="../../media/img/metallist_top_001.jpg" width="100%"/>
+            </div>
+        </header>
+    </nav>
+    <section id="metallist_content">
+        
+    <div id="resultado">            

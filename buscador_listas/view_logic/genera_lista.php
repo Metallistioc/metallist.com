@@ -21,18 +21,22 @@ function texto_template2($template, $diccionario){
 
 $lista = "";
 foreach ($array_canciones as $cancion) {
+    $id_cancion = $cancion['id_cancion'];
     $address_base = '../../media/audio/' . $cancion["artista"] . '/' . $cancion["album"] . '/';
+    $source_files = $address_base . $cancion["titulo"] . ".";
     $imagen_disco = $address_base . $cancion["artista"] . '-' . $cancion["album"] . '_petit.jpg';
     $alt_imagen_disco = $cancion["artista"] . ' - ' . $cancion["album"];
     $posicion_titulo_cancion = $cancion["titulo"];
     $grupo_album_any = $cancion["artista"] . ' - ' . $cancion["album"]
             . '(' . $cancion["comment"] . ') ' . ' - ' . $cancion["year"];
-
+    
     $diccionario = array(
+        'id_cancion' => $id_cancion,
+        'source_files' => archivo_sistema($source_files),
         'imagen_disco' => archivo_sistema($imagen_disco),
         'alt_imagen_disco' => $alt_imagen_disco,
         'posicion_titulo_cancion' => $posicion_titulo_cancion,
-        'grupo_album_any' => $grupo_album_any
+        'grupo_album_any' => $grupo_album_any        
     );
 
     $lista .= texto_template2('../view/fila.html', $diccionario);
@@ -40,8 +44,16 @@ foreach ($array_canciones as $cancion) {
 
 // injectamos directamente, arreglar si da tiempo
 print '<h3>Resultado</h3>';
-print '<ol data-draggable="target">';
+print '<ol id="metallist_search_result" data-draggable="target">';
 print $lista;
 print '</ol>';
-
 ?>
+
+        <div id="metallist_search">
+            <form name="buscador" action="" id="search_form"
+                  onsubmit="buscar_canciones(); return false">
+                <input id="buscador" name="buscar" type="text" size="42"
+                       placeholder="búsqueda por artista, disco o título canción..."/>  
+                <button id="btt_find" type="submit"  value="Buscar">&#10132;</button>
+            </form>
+        </div>
