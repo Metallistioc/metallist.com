@@ -1,19 +1,19 @@
     </div>
     <div id="lista_fila2">
-        <h3>Lista sin guardar</h3>
+        <h3>Lista</h3>
         <ol id="metallist_list" data-draggable="target">
         </ol>
         <div>
             <div id="buttons_order">
             <button onclick="moveUp();return false" disabled>&#11015;</button>
             <button onclick="moveDown();return false" disabled>&#11014;</button>
-            <button onclick="removeFromList();return false" disabled >&#9253;</button>
+            <button onclick="removeFromList();return false" >&#9253;</button>
         </div>
             <div id="buttons_player" >
-                <button id="btt_prev" onclick="playPrevious();return false" >&lt;&lt;</button>
+                <button id="btt_prev" onclick="playPrevious();return false" disabled>&lt;&lt;</button>
                 <button id="bttPlay" onclick="playStop();return false" >&#9658;</button>
                 <button id="bttPause" onclick="playStop();return false" disabled>||</button>
-                <button onclick="playNext();return false" >&gt;&gt;</button>
+                <button onclick="playForw();return false" >&gt;&gt;</button>
             </div>
             <audio id="audio_control" onended="playEnded()"></audio>
         </div>
@@ -25,25 +25,27 @@
              <div>
                  <form name="guardar_lista" action=""
                       onsubmit="check_lista_canciones();return false">
-                <h3>Lista</h3>
+                <h3>Datos lista</h3>
+                <br/>
                 <table>
                     <tr>
                         <td>Nombre</td><td>
                             <label>
-                                <input name="nombre_lista" type="text" required/>
+                                <input  size="60" name="nombre_lista" type="text" required/>
                             </label>
                         </td>
                     </tr>
                     <tr>
                         <td>descripción</td><td>
                             <label>
-                                <input name="descripcion_lista" type="text" required/>
+                                <input  size="60" name="descripcion_lista" type="text" required/>
                             </label>
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <label>
+                                <br/>
                                 <input type="submit" name="Submit" value="guardar"/>
                             </label>
                         </td>

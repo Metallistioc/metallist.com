@@ -50,6 +50,7 @@ function limpiarCamposGuardarLista() {
     document.guardar_lista.descripcion_lista.value = "";
 }
 
+/* Antes de iniciar ajax validamos los datos */
 function check_lista_canciones() {
     var MIN_CANCIONES_LISTA = 4;
     var elem = document.getElementById("metallist_list");

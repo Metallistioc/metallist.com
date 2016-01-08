@@ -18,6 +18,7 @@ if ( isset( $_POST['id'] )){
 
 /* SALIDA A CONSOLA WEB */
 print("**** LISTA CREADA/ACTUALIZADA ***<br/>");
+echo("Usuario: " . "admin@metallist.com" . "<br/>");
 echo("Nombre: " . $array_post[0] . "<br/>");
 echo("Descripción: " . $array_post[1] . "<br/>");
 print("Contiene las canciones (ID): ");

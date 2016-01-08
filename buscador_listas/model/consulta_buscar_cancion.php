@@ -18,7 +18,7 @@ if ( isset( $_POST['buscar'] )){
 // y construirla la consulta dinámicamente en función de los seleccionados.
  $sql = "SELECT id_cancion, titulo, album, artista, year, comment "
             . "FROM cancion WHERE artista LIKE ? OR titulo LIKE ? "
-            . "OR album LIKE ? LIMIT 20";
+            . "OR album LIKE ? LIMIT 30";
 
 /* Prepare statement */
 // Usamos preparadas para evitar injección SQL

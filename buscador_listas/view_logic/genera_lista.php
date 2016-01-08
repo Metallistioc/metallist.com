@@ -27,6 +27,10 @@ foreach ($array_canciones as $cancion) {
     $imagen_disco = $address_base . $cancion["artista"] . '-' . $cancion["album"] . '_petit.jpg';
     $alt_imagen_disco = $cancion["artista"] . ' - ' . $cancion["album"];
     $posicion_titulo_cancion = $cancion["titulo"];
+    
+    if ( strlen($cancion["album"]) > 20){
+        $cancion["album"] = substr( $cancion["album"], 0, 20) . "...";
+    }
     $grupo_album_any = $cancion["artista"] . ' - ' . $cancion["album"]
             . '(' . $cancion["comment"] . ') ' . ' - ' . $cancion["year"];
     

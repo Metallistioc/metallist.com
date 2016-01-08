@@ -14,13 +14,27 @@ body
 div {
     //display: inline-block;
 }
+
+td{
+    padding: 3px 0px;
+}
+
+h3{
+    font-family: verdana;
+    font-weight: bold;
+    font-size: 16px;
+}
+
 .div_table, #resultado{
     float:left;
 }
 
-
 .clear{
     clear: both;
+}
+
+.full_width {
+    width: 100%;
 }
 
 /* FILA LISTA */
@@ -143,6 +157,10 @@ div {
     color:white;
     background-color: #3b4149;
     height: 30px;
+    font-size: 20px;
+    font-weight: bold;
+    padding-left: 20px;
+    
 }
 
 #metallist_content {

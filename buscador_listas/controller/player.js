@@ -1,9 +1,14 @@
+/* Metallist v.1 
+ * Controlador JS del objeto HTML5 audio
+ */
+
 var audioPlayer;
 var bttPlay;
 var bttPause;
 var listaCanciones;
 var cancionActual = null;
 
+ // Este tipo de funciones anónimas se auto-ejecutan al cargar el archivo
 (function () {
     audioPlayer = document.getElementById("audio_control");
     bttPlay = document.getElementById("bttPlay");
@@ -47,9 +52,8 @@ function playEnded(){
     reversePlay(false);
     //alert("Fin de archivo con ID: " + cancionActual.getAttribute("id"));
     cancionActual.removeAttribute('play');
-    cancionActual.getElementsByClassName("lista_cancion_grupo_album_any")[0].style.backgroudSize 
-            = "0px 12px";
-    playNext();
+    cancionActual.getElementsByClassName("lista_cancion_grupo_album_any")[0].style.backgroundSize 
+            = "0px" + " 12px";
 }
 
 // ejecuta el siguiente fichero
@@ -59,9 +63,20 @@ function playNext(){
         playStop();
     } else {
         cancionActual = null;
+        // Se prodría insertar un booleano para controlar bucle reproducción
+        // llamando al primer elemento:
+        // else if (bucle)
+        //    cancionActual = listaCanciones.firstElementChild;
     }
 }
 
+function playForw(){
+    audioPlayer.pause();
+    playEnded();
+    playNext();
+}
+
+// Commutador de botones
 function reversePlay( disablePlay ){
     if ( disablePlay ){
         bttPlay.disabled = true;
@@ -72,15 +87,24 @@ function reversePlay( disablePlay ){
     }
 }
 
+// Actualizamos el % del background para mostrar barra de progreso.
 function updateProgress() {
-   //var progress = document.getElementById("progress");
    var progress = cancionActual.getElementsByClassName("lista_cancion_grupo_album_any")[0];
-   
-
    var anchoCaja = progress.offsetWidth;
+   
    if (audioPlayer.currentTime > 0) {
       value = Math.floor(( anchoCaja / audioPlayer.duration ) * audioPlayer.currentTime);
    }
    progress.style.background = "../../media/img/progress.png";
    progress.style.backgroundSize = value + "px" + " 12px";
+}
+
+/* Clear */
+function removeFromList(){
+    audioPlayer.pause();
+    while ( listaCanciones.firstChild )
+        listaCanciones.removeChild(listaCanciones.firstChild);
+    reversePlay(false);
+    playEnded();
+    playNext();
 }
