@@ -5,7 +5,7 @@
  * TODO FIX: Al recargar el codigo que contiene javascript este no se ejecuta
  * En este caso el que asigna un evento para el Drag & Drop. Hay que pasar
  * el objeto a sincrono (tercer parametro del .open), colocar el JS inline y 
- * asignarle un ID. DespuÃ©s volver a ejecutarlo con un eval( document...id.innerHTML).  
+ * asignarle un ID. Después volver a ejecutarlo con un eval( document...id.innerHTML).  
  */
 
 //Funcion para recoger los datos del formulario de busqueda y enviarlos por post  
@@ -30,7 +30,6 @@ function buscar_canciones() {
             //llamar a funcion para limpiar los inputs
             limpiarCamposBuscarCancion();
             eval(document.getElementById("runscript").innerHTML);
-            //run();
         }
     };
     ajax.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");

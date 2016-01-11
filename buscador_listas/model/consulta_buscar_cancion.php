@@ -6,12 +6,21 @@
 
 //Configuracion de la conexion a base de datos
 include('../../_lib/mysql_connector.php');
+
+// Cleaner hardcoded
+function clean2($data) {
+    $data1 = trim($data);
+    $data2 = stripslashes($data1);
+    $data3 = htmlspecialchars($data2);
+    return $data3;
+}
+
 $array_canciones = array();
 
 //variables POST
 $busqueda = ""; // por defecto, solo para pruebas, después " "
 if ( isset( $_POST['buscar'] )){
-    $busqueda = "%{$_POST['buscar']}%";
+    $busqueda = clean2("%{$_POST['buscar']}%");
 }
 // CONSULTA, se busca en los campos canción, artista y album.
 // Se podrían añadir más campos como año, o en la búsqueda especificar los campos
